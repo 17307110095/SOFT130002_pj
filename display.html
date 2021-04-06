@@ -2,51 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>productdisplay</title>
+    <title>display</title>
+    <link rel="stylesheet" href="css/homepage.css">
+
+    <style>
+        .information p{
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
 
+<div class="title">
+
+    <div class="logo">
+        <div id="word1">Art Store</div>
+        <div id="word2">Where you find GENIUS and EXTROORDINARY</div>
+    </div>
+
+    <div class="navigation">
+        <a href='homepage.html'><span>首页</span></a>
+        <a href='search.html'><span>搜索</span></a>
+        <a href='register.html'><span>注册</span></a>
+        <a href='sign.html'><span>登录</span></a>
+        <a href='collect.html'><span>收藏</span></a>
+    </div>
+</div>
+
+
 <table width="100%" align="center" >
 
-<!--    布局-->
+
     <tr align="center">
         <td>
-            <table width="100%" align="center">
-                <tr>
-                    <td>
-                        <b>Art Store</b>
-                        <a href="homepage.html">首页</a>
-                        <a href="">搜索</a>
-                        <a href="signin.html">登录</a>
-                        <a href="register.html">注册</a>
-                    </td>
-
-                    <td align="right">
-                        <font size="1">未登录</font>
-                    </td>
-                </tr>
-            </table>
-            <hr>
-        </td>
-    </tr>
-
-<!--    名字 作者-->
-    <tr align="center">
-        <td>
-            <p><b>Portrait of Daniel-Henry Kahnweiler</b></p>
-            <p>Artist: Pablo Picasso</p>
+            <p class="name">Portrait of Daniel-Henry Kahnweiler</p>
+            <span class="jump"><a href="search.html" >Pablo Picasso</a></span>
             <hr>
         </td>
     </tr>
     
     <tr>
         <td>
-            <table width="100%" >
+            <table class="information" width="100%" >
 
                 <tr align="center">
 <!--                    图片-->
-                    <td>
-                        <img src="resources/img/8.jpg" alt="">
+                    <td id="world">
+                        <div style='padding-right: 10px'><img src="resources/img/8.jpg" alt=""></div>
                     </td>
 
 
@@ -64,25 +66,25 @@
                             <tr>
 <!--                                大小-->
                                 <td>
-                                    <p>Dimensions: 60.3cm * 46.6cm (23.7in * 18.3in)</p>
+                                    <p><b>Dimensions</b>: 60.3cm * 46.6cm (23.7in * 18.3in)</p>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <p>Medium: Oil on canvas</p>
+                                    <p><b>Medium</b>: Oil on canvas</p>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <p>School: Impressionnism</p>
+                                    <p><b>School</b>: Impressionnism</p>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <p>Location: Detroit Institute of Arts, Detroit</p>
+                                    <p><b>Location</b>: Detroit Institute of Arts, Detroit</p>
                                 </td>
                             </tr>
 
@@ -101,7 +103,7 @@
 
                             <tr>
                                 <td>
-                                    <input type="button" value="ADD TO COLLECTION LIST" ><br>
+                                    <a href='collect.html'><span>ADD TO COLLECTION LIST</span></a>
                                 </td>
                             </tr>
 
@@ -114,8 +116,6 @@
 
     </tr>
 </table>
-
-
 
 
 </body>

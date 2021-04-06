@@ -3,90 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>homepage</title>
+    <link rel="stylesheet" href="css/homepage.css">
 </head>
+
+
 <body>
 
-<table width="100%" align="center" >
+<div class="title">
 
-    <tr>
-        <td>
-            <table width="100%" align="center">
-                <tr>
-                    <!--    logo和标语-->
-                    <td>
-                        <b>Art Store</b>
-                        <font size="1.5">Where you find GENIUS and EXTROORDINARY  </font>
-                    </td>
+    <div class="logo">
+        <div id="word1">Art Store</div>
+        <div id="word2">Where you find GENIUS and EXTROORDINARY</div>
+    </div>
 
-                    <!--        导航栏-->
-                    <td align="right">
-                        <a href="homepage.html">首页</a>
-                        <a href="">搜索</a>
-                        <a href="signin.html">登录</a>
-                        <a href="register.html">注册</a>
+    <div class="navigation">
+        <a href='homepage.html'><span>首页</span></a>
+        <a href='search.html'><span>搜索</span></a>
+        <a href='register.html'><span>注册</span></a>
+        <a href='sign.html'><span>登录</span></a>
+        <a href='collect.html'><span>收藏</span></a>
+    </div>
+</div>
 
-                    </td>
-                </tr>
-            </table>
-            <hr>
-        </td>
-    </tr>
 
-    <tr>
-        <!--        头图-->
-        <td align="center">
-            <img src="resources/img/58.jpg" alt=""  width="95%" height="500" >
-            <hr>
-        </td>
-    </tr>
 
-    <tr>
-        <td align="center">Most Viewed</td>
-    </tr>
+<div class="carouselMap">
+    <a href="display.html"><img id="img" src="resources/img/445.jpg" width="1550px" height="700px"></a>
+</div>
 
-    <tr>
-        <td>
-            <table  cellspacing="100">
-                <tr align="center" valign="top">
-                    <td>
-                        <img src="resources/img/6.jpg" alt="" width="200" height="200">
-                        <p><b>The Actor</b></p>
-                        <p><b>Pablo Picasso</b></p>
-                        <p>Picasso painted <em>The Actor</em> over another painting, because he could not afford new canvases at the time. He created the painting over the winter of 1904–1905, at the age of 23.</p>
-                        <p><a href="productdisplay.html">LEARN MORE</a></p>
-                    </td>
+<script>
+    var number = 445;
+    function fun(){
+        number ++ ;
+        if(number > 447){
+            number = 445;
+        }
+        var img = document.getElementById("img");
+        img.src = "resources/img/"+number+".jpg";
+    }
+    setInterval(fun,3000);
+</script>
 
-                    <td>
-                        <img src="resources/img/7.jpg" alt="" width="200" height="200">
-                        <p><b>Family of Saltimbanques</b></p>
-                        <p><b>Pablo Picasso</b></p>
-                        <p><em>Family of Saltimbanques</em>(La famille de saltimbanques) is a 1905 painting by Pablo Picasso. It is considered the masterpiece of Picasso's circus period.</p>
-                        <p><a href="productdisplay.html">LEARN MORE</a></p>
-                    </td>
 
-                    <td>
-                        <img src="resources/img/8.jpg" alt="" width="200" height="200">
-                        <p><b>Portrait of Daniel-Henry Kahnweiler</b></p>
-                        <p><b>Pablo Picasso</b></p>
-                        <p>In 1907 Picasso joined an art gallery that had recently been opened in Paris by Daniel-Henry Kahnweiler. Kahnweiler was a German art historian, art collector who became one of the premier French art dealers of the 20th century.</p>
-                        <p><a href="productdisplay.html">LEARN MORE</a></p>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
+<table>
+<tr>
+    <td>
+        <table  cellspacing="100">
+            <tr align="center" valign="top">
+                <td>
+                    <a href="display.html"><img src="resources/img/6.jpg" alt="" width="500" height="600"></a>
+                    <p class="name">The Actor</p>
+                    <p class="author">Pablo Picasso</p>
+                    <p class="text">Picasso painted <em>The Actor</em> over another painting, because he could not afford new canvases at the time. He created the painting over the winter of 1904–1905, at the age of 23.</p>
+                    <span class="jump"><a href="display.html" >View Details</a></span>
+                </td>
 
-    <tfoot>
-    <tr>
-        <td align="center" bgcolor="black" height="50">
-            <font color="white" size="2">
-                &copy;ArtStore Produced and maintained by Achillessanger at 2018.4.1. All Rights Reserved
-            </font>
-        </td>
-    </tr>
-    </tfoot>
+                <td>
+                    <a href="display.html"><img src="resources/img/7.jpg" alt="" width="500" height="600"></a>
+                    <p class="name">Family of Saltimbanques</p>
+                    <p class="author">Pablo Picasso</p>
+                    <p class="text"><em>Family of Saltimbanques</em>(La famille de saltimbanques) is a 1905 painting by Pablo Picasso. It is considered the masterpiece of Picasso's circus period.</p>
+                    <span class="jump"><a href="display.html" >View Details</a></span>
+                </td>
 
-</table>
+                <td>
+                    <a href="display.html"><img src="resources/img/8.jpg" alt="" width="500" height="600"></a>
+                    <p class="name">Portrait of Daniel-Henry Kahnweiler</p>
+                    <p class="author">Pablo Picasso</p>
+                    <p class="text">In 1907 Picasso joined an art gallery that had recently been opened in Paris by Daniel-Henry Kahnweiler. Kahnweiler was a German art historian, art collector who became one of the premier French art dealers of the 20th century.</p>
+                    <span class="jump"><a href="display.html" >View Details</a></span>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr></table>
+
+
+<div class="foot">
+    <span id="word3">
+        &copy;ArtStore Produced and maintained by Achillessanger at 2018.4.1. All Rights Reserved
+    </span>
+</div>
+
 
 </body>
+
 </html>
+

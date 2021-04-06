@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div{
+    text-align: center;
+}
+
+.top {
+    height: 500px;
+    width: 100%;
+    text-align: center;
+    padding-top: 200px;
+}
+
+.smallTop {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.screen{
+    display: flex;
+    position: center;
+    width: 400px;
+    height: 45px;
+    padding-left: 700px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.screen label:hover{
+    color: royalblue;
+}
+
+.blank {
+    background-color: #ffffff;
+    width: 700px;
+    height: 50px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #ccc;
+    padding-left: 20px;
+}
+.blank:hover{
+    box-shadow: 0 0 5px black;
+}
+
+.button{
+    color: white;
+    width: 120px;
+    height: 50px;
+    background: black;
+    font-size: 18px;
+    font-family: "Courier New";
+    cursor: pointer;
+}
+.button:hover{
+    box-shadow: 0 0 5px black;
+}
+
+
+.result{
+    margin:15px 0 ;
+    padding: 20px 0;
+    word-spacing: 8px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Dubai Light";
+}
+
+.innerResult{
+    margin:15px 0 ;
+    padding: 20px 0;
+    word-spacing: 8px;
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Dubai Light";
+}
+
+.bottom{
+    text-align: center;
+    width: 100%;
+}
+
+.page{
+    margin-top: 50px;
+    margin-left: 300px;
+    margin-right: 300px;
+    font-size: 14px;
+    display:inline-block;
+}
+.page a,
+.page span{
+    display: inline-block;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #bdb4b4;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #999;
+    cursor: pointer;
+    margin-right:5px;
+
+}
+.page span:hover{
+    background-color: royalblue;
+}
+
+.page a.currentPage,
+.page span.currentPage{
+    color: #ffffff;
+    background: cadetblue;
+}
+
