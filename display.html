@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>display</title>
+    <title>详情</title>
     <link rel="stylesheet" href="css/homepage.css">
+
 
     <style>
         .information p{
@@ -11,6 +12,14 @@
             line-height: 70px;
         }
     </style>
+
+    <script>
+        window.onload = function (){
+            document.getElementById("collect").onclick = function (){
+                alert("添加成功");
+            };
+        }
+    </script>
 </head>
 <body>
 
@@ -30,6 +39,9 @@
     </div>
 </div>
 
+<br><br>
+<div id="trace"> </div>
+<br><hr style="background-color: white; height: 1px"><br>
 
 <table width="100%" align="center" >
 
@@ -47,9 +59,22 @@
             <table class="information" width="100%" >
 
                 <tr align="center">
-<!--                    图片-->
+
                     <td id="world">
-                        <div style='padding-right: 10px'><img src="resources/img/8.jpg" alt=""></div>
+<!--                        <div style='padding-right: 10px'><img src="resources/img/8.jpg" alt=""></div>-->
+                        <div id="demo1">
+                            <div id="demo">
+                                <div id="small-box">
+                                    <div id="mark"></div>
+                                    <div id="float-box"></div>
+                                    <img id="MonaLisa" src="resources/img/8.jpg"/>
+                                </div>
+                                <div id="big-box">
+                                    <img src="resources/img/8.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+
                     </td>
 
 
@@ -104,7 +129,7 @@
 
                             <tr>
                                 <td>
-                                    <a href='collect.html'><span>ADD TO COLLECTION LIST</span></a>
+                                    <a id="collect" href='collect.html'><span>ADD TO COLLECTION LIST</span></a>
                                 </td>
                             </tr>
 
@@ -118,6 +143,7 @@
     </tr>
 </table>
 
-
+<script src="js/foot.js"></script>
+<script src="js/Description_big.js"></script>
 </body>
 </html>
