@@ -13,6 +13,21 @@
         }
     </style>
 
+    <style>
+        .in_sub{
+            width: 250px;
+            height: 100px;
+            color: white;
+            background-color: black;
+            border: 1px solid black ;
+            text-decoration:none;
+        }
+        .in_sub:hover{
+            background-color: orangered;
+            border: 1px solid orangered ;
+        }
+    </style>
+
     <script>
         window.onload = function (){
             document.getElementById("collect").onclick = function (){
@@ -61,7 +76,7 @@
                 <tr align="center">
 
                     <td id="world">
-<!--                        <div style='padding-right: 10px'><img src="resources/img/8.jpg" alt=""></div>-->
+
                         <div id="demo1">
                             <div id="demo">
                                 <div id="small-box">
@@ -129,7 +144,7 @@
 
                             <tr>
                                 <td>
-                                    <a id="collect" href='collect.html'><span>ADD TO COLLECTION LIST</span></a>
+                                    <a  href='collect.html' class="in_sub" id="collect"><span>ADD TO COLLECTION LIST</span></a>
                                 </td>
                             </tr>
 
