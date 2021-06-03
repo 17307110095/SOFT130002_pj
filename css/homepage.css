@@ -3,6 +3,17 @@
     padding: 0;
 }
 
+.description {
+    width: 35%;
+    position: absolute;
+    top: 450px;
+    left: 900px;
+    z-index: 1;
+    text-align: left;
+    color: white;
+    font-size: 20px;
+}
+
 .title{
     width: 100%;
     height:100px;
@@ -88,14 +99,14 @@
     font-family: "cursive",serif;
 }
 .text{
+
     font-size: 20px;
-    padding-bottom: 50px;
-    width: 270px;
-    line-height: 50px;
+
     text-indent: 2em
 }
 
 .jump {
+    text-align: center;
     width: 300px;
     font-size: 25px;
     line-height: 20px;
