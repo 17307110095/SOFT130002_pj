@@ -61,11 +61,32 @@ $art_store->query("UPDATE `artworks` SET `view` = $newView WHERE `artworkID` = $
     <div class="navigation">
         <a href='homepage.php'><span>首页</span></a>
         <a href='search.php'><span>搜索</span></a>
-        <a href='register.html'><span>注册</span></a>
-        <a href='sign.html'><span>登录</span></a>
-        <a href='collect.php'><span>收藏</span></a>
+        <a href='register.php'><span>注册</span></a>
+
+        <?php if (!isset($_SESSION['userName']))
+            echo '<a href="sign.php"><span>登录</span></a>';
+        else
+            echo '<a href="php/destroy.php"><span>登出</span></a>';
+
+        ?>
+
+        <?php if (isset($_SESSION['userName']))
+            echo "<a href='collect.php'><span>收藏</span></a>";
+        ?>
+
+
     </div>
+
+
 </div>
+
+<?php if (isset($_SESSION['userName']))
+    echo '<div style="color: black; text-align: right; font-size: 30px; font-family: Lucida ">
+    登录用户 ： ' . $_SESSION['userName'] . '</span></a>
+</div>'
+
+    ;?>
+
 
 <br><br>
 <div id="trace"> </div>
@@ -168,17 +189,23 @@ $art_store->query("UPDATE `artworks` SET `view` = $newView WHERE `artworkID` = $
                             <tr>
                                 <td>
                                     <?php
-                                    $userID = 1;
-                                    $sql_test = "SELECT * FROM `carts` WHERE `userID` =  '$userID' AND `artworkID` =  '$artworkID'";
-                                    $result = $art_store->query($sql_test);
-                                    if($result->num_rows > 0)
+                                    if(isset($_SESSION['userName']))
                                     {
-                                        echo '<a  href="php/deleteInCollection.php?id=' . $row['artworkID'] . '" class="in_sub" id="collect"><span>DELETE IT IN COLLECTION LIST</span></a>';
-                                        echo "(已收藏)";
+                                        $userID = $_SESSION['userID'];
+                                        $sql_test = "SELECT * FROM `carts` WHERE `userID` =  '$userID' AND `artworkID` =  '$artworkID'";
+                                        $result = $art_store->query($sql_test);
+                                        if($result->num_rows > 0)
+                                        {
+                                            echo '<a  href="php/deleteInCollection.php?id=' . $row['artworkID'] . '" class="in_sub" id="collect"><span>DELETE IT IN COLLECTION LIST</span></a>';
+                                            echo "(已收藏)";
+                                        }
+                                        else
+                                            echo '<a  href="php/addToCollection.php?id=' . $row['artworkID'] . '" class="in_sub" id="collect"><span>ADD TO COLLECTION LIST</span></a>';
+
                                     }
-                                    else
-                                        echo '<a  href="php/addToCollection.php?id=' . $row['artworkID'] . '" class="in_sub" id="collect"><span>ADD TO COLLECTION LIST</span></a>';
-                                    ?>
+
+
+                                       ?>
 
                                     <p></p>
                                 </td>

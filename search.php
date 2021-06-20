@@ -33,11 +33,32 @@ include_once 'php/head.php';
     <div class="navigation">
         <a href='homepage.php'><span>首页</span></a>
         <a href='search.php'><span>搜索</span></a>
-        <a href='register.html'><span>注册</span></a>
-        <a href='sign.html'><span>登录</span></a>
-        <a href='collect.php'><span>收藏</span></a>
+        <a href='register.php'><span>注册</span></a>
+
+        <?php if (!isset($_SESSION['userName']))
+            echo '<a href="sign.php"><span>登录</span></a>';
+        else
+            echo '<a href="php/destroy.php"><span>登出</span></a>';
+
+        ?>
+
+        <?php if (isset($_SESSION['userName']))
+            echo "<a href='collect.php'><span>收藏</span></a>";
+        ?>
+
+
     </div>
+
+
 </div>
+
+<?php if (isset($_SESSION['userName']))
+    echo '<div style="color: black; text-align: right; font-size: 30px; font-family: Lucida ">
+    登录用户 ： ' . $_SESSION['userName'] . '</span></a>
+</div>'
+
+    ;?>
+
 
 <br><br>
 <div id="trace"> </div>
@@ -63,7 +84,7 @@ include_once 'php/head.php';
 
 <br>
 <h1 style="text-align: center"> 搜索结果：</h1>
-<form id="search_2" style="padding-left: 1160px; font-size: large">
+<form id="search_2" style="padding-left: 300px; font-size: large;">
     <br>
     <label>
         排序方式 :
@@ -75,6 +96,25 @@ include_once 'php/head.php';
 
 <div class="container" id="item">
 </div>
+
+<nav aria-label="Page navigation" style="text-align: center; font-size: large">
+    <ul class="pagination">
+
+        <li id="pin">
+            <a href="#" aria-label="Previous" id="prePage">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+
+
+        <li>
+            <a href="#" aria-label="Next" id="nextPage">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+
+    </ul>
+</nav>
 
 
 <script src="js/foot.js"></script>

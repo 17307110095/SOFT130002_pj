@@ -1,6 +1,6 @@
 <?php
 include_once 'head.php';
-$userID = 1;
+$userID = $_SESSION['userID'];
 $artworkID = $_GET['id'];
 
 $sql_test = "SELECT * FROM `carts` WHERE `userID` =  '$userID' AND `artworkID` =  '$artworkID'";

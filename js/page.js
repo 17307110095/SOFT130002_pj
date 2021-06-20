@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    var page = 1;
+    var total = 1;
+    var pages = 1;
+
     $('#btSearch').click(function () {
         Load();
     });
@@ -37,6 +41,20 @@ $(document).ready(function () {
         }
     );
 
+
+    $('#prePage').click(function () {
+        page = (page === 1) ? 1 : (page - 1);
+        Load();
+    });
+
+    $('#nextPage').click(function () {
+        page = (page === pages) ? page : (page + 1);
+        Load();
+    });
+
+
+
+
     function Load() {
         var key = $('#key').val();
         let title = 0;
@@ -58,8 +76,35 @@ $(document).ready(function () {
         }
 
         $.ajax({
+            url: "php/totalPage.php",
+            data: {
+                key: key,
+                title: title,
+                description: description,
+                artist: artist,
+                order: order
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data0) {
+                total = data0;
+                pages = (total % 5 === 0) ? (total / 5) : ((total - (total % 5)) / 5 + 1);
+                $("[--id]").remove();
+                for (var i = pages; i > 0; i--)
+                {
+                    $("#pin").after("<li><a href=\"#\"  --id=\"" + i + "\">" + i + "</a></li>");
+                }
+                $("[--id]").click(function (event) {
+                    page = $(this).attr("--id");
+                    Load();
+                });
+            }
+        });
+
+        $.ajax({
             url: "php/page.php",
             data: {
+                page: page,
                 key: key,
                 title: title,
                 description: description,
@@ -105,6 +150,7 @@ $(document).ready(function () {
                 $("#item").html(str);
             }
         });
+
     }
 });
 

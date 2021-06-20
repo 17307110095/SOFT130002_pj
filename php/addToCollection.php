@@ -1,7 +1,8 @@
 <?php
 include_once 'head.php';
-$userID = 1;
+
 $artworkID = $_GET['id'];
+$userID = $_SESSION['userID'];
 
 $sql_test = "SELECT * FROM `carts` WHERE `userID` =  '$userID' AND `artworkID` =  '$artworkID'";
 $result = $art_store->query($sql_test);

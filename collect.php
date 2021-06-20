@@ -1,6 +1,6 @@
 <?php
 include_once 'php/head.php';
-$userID = 1;
+$userID = $_SESSION['userID'];
 $user = $art_store->query("SELECT * FROM `users` WHERE `userID` = '" . $userID . "'");
 $row1 = $user->fetch_assoc();
 
@@ -50,17 +50,13 @@ $art = $art_store->query("SELECT * FROM `carts` WHERE `userID` =  '$userID'");
 
     <script>
         window.onload = function () {
-                document.getElementById("btn_delete").onclick = function (){
+            $('.btn_delete').click(function () {
+                if(confirm("是否确认取消收藏")){
 
-
-                    if(confirm("是否确认取消收藏")){
-
-                        var id = this.getAttribute("--art_id");
-                        location.href = "php/deleteInCollection.php?id=" + id;
-
-                    }
-
-                };
+                    var id = this.getAttribute("--art_id");
+                    location.href = "php/deleteInCollection.php?id=" + id;
+                }
+            });
         }
     </script>
 
@@ -68,21 +64,42 @@ $art = $art_store->query("SELECT * FROM `carts` WHERE `userID` =  '$userID'");
 
 <body>
 
-    <div class="title">
+<div class="title">
 
-        <div class="logo">
-            <div id="word1">Art Store</div>
-            <div id="word2">Where you find GENIUS and EXTROORDINARY</div>
-        </div>
-
-        <div class="navigation">
-            <a href='homepage.php'><span>首页</span></a>
-            <a href='search.php'><span>搜索</span></a>
-            <a href='register.html'><span>注册</span></a>
-            <a href='sign.html'><span>登录</span></a>
-            <a href='collect.php'><span>收藏</span></a>
-        </div>
+    <div class="logo">
+        <div id="word1">Art Store</div>
+        <div id="word2">Where you find GENIUS and EXTROORDINARY</div>
     </div>
+
+    <div class="navigation">
+        <a href='homepage.php'><span>首页</span></a>
+        <a href='search.php'><span>搜索</span></a>
+        <a href='register.php'><span>注册</span></a>
+
+        <?php if (!isset($_SESSION['userName']))
+            echo '<a href="sign.php"><span>登录</span></a>';
+        else
+            echo '<a href="php/destroy.php"><span>登出</span></a>';
+
+        ?>
+
+        <?php if (isset($_SESSION['userName']))
+            echo "<a href='collect.php'><span>收藏</span></a>";
+        ?>
+
+
+    </div>
+
+
+</div>
+
+<?php if (isset($_SESSION['userName']))
+    echo '<div style="color: black; text-align: right; font-size: 30px; font-family: Lucida ">
+    登录用户 ： ' . $_SESSION['userName'] . '</span></a>
+</div>'
+
+    ;?>
+
 
 
     <br><br>
@@ -154,7 +171,7 @@ $art = $art_store->query("SELECT * FROM `carts` WHERE `userID` =  '$userID'");
                     <hr class="hr">
                 </div>
                 <div class="row" >
-                    <input  type="button" class="in_sub" --art_id="' . $row3['artworkID'] . '"value="DELETE IT" id="btn_delete">
+                    <input  type="button" class="in_sub btn_delete" --art_id="' . $row3['artworkID'] . '"value="DELETE IT" >
                 </div>
             </div>
         </div>';

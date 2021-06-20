@@ -1,3 +1,29 @@
+<?php
+include_once 'php/head.php';
+
+if (isset($_POST['username'])&& isset($_POST['password'])&& isset($_POST['tel'])&& isset($_POST['email'])&& isset($_POST['address'])){
+    $name = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $tel = $_POST['tel'];
+    $location = $_POST['address'];
+    $insert = "INSERT INTO users ( name, email, password, tel, address) VALUES ( '$name','$email','$password','$tel','$location')";
+    $newUser = $art_store->query($insert);
+    if(! $newUser ) {
+        die('注册失败，用户名已存在！'.'重新<a href="register.php">注册</a>');
+    }else{
+        $_SESSION['admin'] = "true";
+        $_SESSION['userName'] =$name;
+        $_SESSION['userEmail'] =$email;
+        $_SESSION['userTel'] =$tel;
+        $_SESSION['userID'] =($newUser->fetch_assoc())['userID'];
+        $_SESSION['userAddress'] =$location;
+        echo "<script> alert('注册成功！');location.href = 'homepage.php';
+              </script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +37,7 @@
                 document.getElementById("form").onsubmit = function(){
                     var result = checkUsername() && checkPassword() && checkConfirm();
                     if(result)
-                        alert("注册成功");
+                        alert("表单校验成功");
                     else
                         alert("校验错误，请重新输入");
                     return result;
@@ -82,7 +108,7 @@
 
                 <br>
                 <div class="rg_form">
-                    <form action="#" id="form" method="get">
+                    <form action="#" id="form" method="post">
                         <table>
                             <tr>
                                 <td class="td_left"><label for="username">用户名</label></td>
@@ -120,8 +146,8 @@
                             </tr>
 
                             <tr>
-                                <td class="td_left"><label for="name">姓名</label></td>
-                                <td class="td_right"><input type="text" name="name" id="name" placeholder="please enter your name"></td>
+                                <td class="td_left"><label for="address">地址</label></td>
+                                <td class="td_right"><input type="text" name="address" id="name" placeholder="please enter your address"></td>
                             </tr>
 
                             <tr>
@@ -150,7 +176,7 @@
                 </div>
 
                 <br><br>
-                <p class="out_jump"><a class="in_jump" href="sign.html"> SIGN IN </a></p>
+                <p class="out_jump"><a class="in_jump" href="sign.php"> SIGN IN </a></p>
 
                 <br>
                 <p class="out_jump"><a class="in_jump" href="homepage.php"> BACK TO HOMEPAGE </a></p>

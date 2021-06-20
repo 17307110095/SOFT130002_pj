@@ -1,13 +1,11 @@
 <?php
 include_once 'head.php';
-$page = $_POST["page"];
 $key = $_POST["key"];
 $title = $_POST["title"];
 $description = $_POST["description"];
 $artist = $_POST["artist"];
 $order = $_POST['order'];
-$pageSize = 5;
-$mark = ($page - 1) * $pageSize;;
+
 
 $sql = "SELECT * FROM `artworks` ";
 if ($title == 1) {
@@ -38,8 +36,7 @@ if ($order == 1) {
     $sql .= ") AND `orderID` IS NULL ORDER BY `price` ASC";
 }
 
-$sql .= " LIMIT {$mark},{$pageSize}";
-$r = $art_store->query($sql);
-echo json_encode($r->fetch_all(MYSQLI_ASSOC));
+$total = $art_store->query($sql);
+echo $total->num_rows;
 
 ?>
