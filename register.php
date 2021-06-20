@@ -12,11 +12,15 @@ if (isset($_POST['username'])&& isset($_POST['password'])&& isset($_POST['tel'])
     if(! $newUser ) {
         die('注册失败，用户名已存在！'.'重新<a href="register.php">注册</a>');
     }else{
+        $next = "SELECT * FROM users WHERE name = '$name'";
+        $nowUser = $art_store->query($next);
+        $row2 = $nowUser -> fetch_assoc();
+        $_SESSION['userID'] = $row2['userID'];
+
         $_SESSION['admin'] = "true";
         $_SESSION['userName'] =$name;
         $_SESSION['userEmail'] =$email;
         $_SESSION['userTel'] =$tel;
-        $_SESSION['userID'] =($newUser->fetch_assoc())['userID'];
         $_SESSION['userAddress'] =$location;
         echo "<script> alert('注册成功！');location.href = 'homepage.php';
               </script>";
